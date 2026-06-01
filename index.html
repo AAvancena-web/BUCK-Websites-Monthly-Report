@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BUCK Website Maintenance Work — End of Month Report</title>
+  <meta name="description" content="Monthly performance, maintenance, and analytics report for the BUCK website portfolio." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="masthead">
+    <div class="masthead__rule"></div>
+    <div class="masthead__inner">
+      <div class="masthead__brand">
+        <h1 id="report-title">BUCK Website Maintenance Work</h1>
+      </div>
+      <p class="masthead__edition" id="report-edition">End of Month Report</p>
+    </div>
+    <div class="masthead__rule masthead__rule--thin"></div>
+    <div class="masthead__meta">
+      <nav class="period-tabs" id="period-tabs" aria-label="Select report month"></nav>
+      <button class="btn-print" type="button" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="toolbar__search">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="search" type="search" placeholder="Search sites…" autocomplete="off" />
+      </div>
+      <label class="toolbar__sort">
+        <span>Sort</span>
+        <select id="sort">
+          <option value="default">Report order</option>
+          <option value="name">Name (A–Z)</option>
+          <option value="mobile-asc">Mobile speed (low → high)</option>
+          <option value="mobile-desc">Mobile speed (high → low)</option>
+          <option value="desktop-asc">Desktop speed (low → high)</option>
+          <option value="desktop-desc">Desktop speed (high → low)</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- Site cards -->
+    <section class="grid" id="grid" aria-label="Sites"></section>
+
+    <p class="empty" id="empty" hidden>No sites match your search.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="masthead__rule masthead__rule--thin"></div>
+    <p>End of Month Report · BUCK Website Maintenance Work · <span id="footer-period">—</span></p>
+    <p class="footer__legend">
+      PageSpeed legend:
+      <span class="chip chip--poor">0–49</span>
+      <span class="chip chip--mid">50–89</span>
+      <span class="chip chip--good">90–100</span>
+    </p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
