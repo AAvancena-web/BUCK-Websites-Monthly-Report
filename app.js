@@ -133,10 +133,16 @@
   const SRC_COLORS = ["#7c2d2d", "#2c7a4f", "#b07918", "#3d6b7d", "#5d564b", "#9a6a3a"];
 
   const METRIC_TIPS = {
+    // Legacy set (April–May)
     Sessions: "A session is one visit to the site — a single period of activity by a user. One person can start several sessions.",
     Users: "The number of distinct people who visited. A single user may return across multiple sessions.",
     Pageviews: "The total number of pages loaded, counting repeat views of the same page.",
     Engagement: "The share of sessions that were engaged — lasting over 10 seconds, triggering a key event, or viewing two or more pages.",
+    // GA4 set (June onward)
+    "Active Users": "The number of distinct users who engaged with the site in the period — GA4's primary 'Users' metric.",
+    "New Users": "Users who interacted with the site for the first time in the period.",
+    "Avg Engagement": "Average time the site was in focus in the browser, per active user.",
+    "Event Count": "Total tracked events — page views, scrolls, clicks, and other interactions.",
   };
 
   const CHANNEL_TIPS = {
@@ -145,6 +151,7 @@
     "organic social": "Visitors from unpaid posts or links on social media.",
     "organic shopping": "Visitors from unpaid listings in shopping tabs or marketplaces.",
     "referral": "Visitors who clicked a link to the site from another website.",
+    "cross network": "Visitors from ads shown across a mix of Google networks (e.g. cross-network campaigns).",
     "paid search": "Visitors who arrived through paid search ads.",
     "paid social": "Visitors who arrived through paid social media ads.",
     "email": "Visitors who arrived from an email campaign.",
@@ -182,12 +189,24 @@
   }
 
   function analyticsBlock(a) {
-    const cells = [
-      ["Sessions", a.sessions],
-      ["Users", a.users],
-      ["Pageviews", a.pageviews],
-      ["Engagement", a.engagementRate == null ? null : a.engagementRate + "%"],
-    ];
+    // Two supported GA metric sets, auto-detected per site:
+    //   • Legacy (Apr–May): sessions / users / pageviews / engagementRate
+    //   • GA4    (Jun on):  activeUsers / newUsers / avgEngagement / eventCount
+    const isGA4 = a.activeUsers != null || a.newUsers != null ||
+                  a.avgEngagement != null || a.eventCount != null;
+    const cells = isGA4
+      ? [
+          ["Active Users", a.activeUsers],
+          ["New Users", a.newUsers],
+          ["Avg Engagement", a.avgEngagement],  // includes its unit, e.g. "24s"
+          ["Event Count", a.eventCount],
+        ]
+      : [
+          ["Sessions", a.sessions],
+          ["Users", a.users],
+          ["Pageviews", a.pageviews],
+          ["Engagement", a.engagementRate == null ? null : a.engagementRate + "%"],
+        ];
     const hasData = cells.some(([, v]) => v != null);
     const grid = `
       <div class="analytics-grid">
