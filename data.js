@@ -23,9 +23,255 @@
 const REPORTS = [
 
   /* ===========================================================================
-     MAY 2026  —  DRAFT
-     Scores below were carried over from April as a starting point.
-     Re-run PageSpeed, update the audit numbers, and replace the actions.
+     JUNE 2026
+     First full analytics pull across the portfolio. Figures use GA4's newer
+     metric set: Active Users / New Users / Avg Engagement Time / Event Count.
+     =========================================================================== */
+  {
+    meta: {
+      title: "BUCK Website Maintenance Work",
+      subtitle: "End of Month Report",
+      month: "June",
+      year: 2026,
+      analyticsNote:
+        "Analytics are pulled from each site's Google Analytics 4 property " +
+        "for the reporting month.",
+    },
+    sites: [
+      {
+        name: "BUCKOne",
+        url: "https://buckone.org",
+        pagespeed: { mobile: 72, desktop: 40 },
+        audit: {
+          mobile:  { accessibility: 89, bestPractices: 92, seo: 100 },
+          desktop: { accessibility: 96, bestPractices: 96, seo: 100 },
+        },
+        actions: [
+          { text: "Updated the following plugins:", done: true, items: [
+            "All-in-One WP Migration and Backup",
+            "MailOptin - Lite",
+            "Smush",
+            "Unlimited Elements for Elementor",
+            "W3 Total Cache",
+            "WP Armour - Honeypot Anti Spam",
+          ] },
+        ],
+        analytics: {
+          activeUsers: 133, newUsers: 133, avgEngagement: "4s", eventCount: 478,
+          sources: [
+            { channel: "Direct",         sessions: 108, share: 80.0 },
+            { channel: "Organic Search", sessions: 20,  share: 14.8 },
+            { channel: "Organic Social", sessions: 6,   share: 4.4 },
+            { channel: "Referral",       sessions: 1,   share: 0.7 },
+          ],
+        },
+      },
+      {
+        name: "BUCK Academy",
+        url: "https://buckacademy.org",
+        pagespeed: { mobile: 39, desktop: 51 },
+        audit: {
+          mobile:  { accessibility: 44, bestPractices: 73, seo: 77 },
+          desktop: { accessibility: 44, bestPractices: 73, seo: 77 },
+        },
+        actions: [
+          { text: "Created Give page.", done: true },
+          { text: "Created Fundraising page.", done: true },
+          { text: "Made changes to the books on the front page.", done: true },
+          { text: "Removed 'coming soon' tags and replaced them with new books.", done: true },
+        ],
+        analytics: {
+          activeUsers: 266, newUsers: 258, avgEngagement: "24s", eventCount: "1.8K",
+          sources: [
+            { channel: "Direct",           sessions: 195, share: 60.6 },
+            { channel: "Organic Search",   sessions: 73,  share: 22.7 },
+            { channel: "Unassigned",       sessions: 33,  share: 10.2 },
+            { channel: "Organic Social",   sessions: 11,  share: 3.4 },
+            { channel: "Organic Shopping", sessions: 5,   share: 1.6 },
+            { channel: "Referral",         sessions: 4,   share: 1.2 },
+            { channel: "Cross Network",    sessions: 1,   share: 0.3 },
+          ],
+        },
+      },
+      {
+        name: "Febyolla",
+        url: "https://febyolla.com",
+        pagespeed: { mobile: 52, desktop: 65 },
+        audit: {
+          mobile:  { accessibility: 100, bestPractices: 96, seo: 85 },
+          desktop: { accessibility: 96,  bestPractices: 96, seo: 85 },
+        },
+        actions: [
+          { text: "Updated the following plugins:", done: true, items: [
+            "All-in-One WP Migration and Backup",
+            "Logo Slider",
+            "MetaSlider Slideshow",
+            "Site Kit by Google",
+            "WP Armour - Honeypot Anti Spam",
+          ] },
+        ],
+        analytics: {
+          activeUsers: 15, newUsers: 16, avgEngagement: "13s", eventCount: 65,
+          sources: [
+            { channel: "Direct",         sessions: 12, share: 80.0 },
+            { channel: "Organic Search", sessions: 3,  share: 20.0 },
+          ],
+        },
+      },
+      {
+        name: "Dustin Goss",
+        url: "https://dustinericgoss.com",
+        pagespeed: { mobile: 59, desktop: 68 },
+        audit: {
+          mobile:  { accessibility: 95, bestPractices: 92, seo: 85 },
+          desktop: { accessibility: 89, bestPractices: 96, seo: 85 },
+        },
+        actions: [
+          { text: "Updated the following plugins:", done: true, items: [
+            "All-in-One WP Migration and Backup",
+            "Classic Editor",
+            "Contact Form 7",
+            "Logo Slider",
+            "MetaSlider",
+            "Wordfence Security",
+          ] },
+        ],
+        // Carried over from May 2026 (no new figures reported for June).
+        analytics: {
+          sessions: 3, users: 3, pageviews: 3, engagementRate: 0,
+          sources: [
+            { channel: "Direct", sessions: 3, share: 100 },
+          ],
+        },
+      },
+      {
+        name: "Messy Chefs",
+        url: "https://messychefs.com",
+        pagespeed: { mobile: 54, desktop: 64 },
+        audit: {
+          mobile:  { accessibility: 93, bestPractices: 69, seo: 85 },
+          desktop: { accessibility: 89, bestPractices: 69, seo: 85 },
+        },
+        actions: [
+          { text: "Updated the following plugins:", done: true, items: [
+            "All-in-One WP Migration and Backup",
+            "Pop Up Maker",
+            "Site Kit by Google",
+            "WP Armour - Honeypot Anti Spam",
+            "Yoast SEO",
+          ] },
+        ],
+        analytics: {
+          activeUsers: 44, newUsers: 43, avgEngagement: "10s", eventCount: 222,
+          sources: [
+            { channel: "Direct",         sessions: 38, share: 84.4 },
+            { channel: "Referral",       sessions: 3,  share: 6.7 },
+            { channel: "Organic Search", sessions: 3,  share: 6.7 },
+            { channel: "Unassigned",     sessions: 1,  share: 2.2 },
+          ],
+        },
+      },
+      {
+        name: "Crown Expert",
+        url: "https://crownexpert.com",
+        pagespeed: { mobile: 100, desktop: 100 },
+        audit: {
+          mobile:  { accessibility: 95, bestPractices: 96, seo: 82 },
+          desktop: { accessibility: 95, bestPractices: 96, seo: 82 },
+        },
+        actions: [
+          { text: "Updated the following plugins:", done: true, items: [
+            "All-in-One WP Migration and Backup",
+            "Site Kit by Google",
+            "WP Armour - Honeypot Anti Spam",
+            "Ultimate Addons for Elementor (UAE)",
+            "Wordfence Security",
+            "WPForms Lite",
+          ] },
+        ],
+        analytics: {
+          activeUsers: 1, newUsers: 1, avgEngagement: "0s", eventCount: 3,
+          sources: [
+            { channel: "Direct", sessions: 1, share: 100 },
+          ],
+        },
+      },
+      {
+        name: "BUCK Academy LMS",
+        url: "https://bucksacademy.com",
+        pagespeed: { mobile: 59, desktop: 72 },
+        audit: {
+          mobile:  { accessibility: 98, bestPractices: 96, seo: 77 },
+          desktop: { accessibility: 98, bestPractices: 96, seo: 77 },
+        },
+        actions: [
+          { text: "Updated the following plugins:", done: true, items: [
+            "All-in-One WP Migration and Backup",
+            "Essential Addons for Elementor",
+            "HT Mega Addons for Elementor - Elementor Widgets & Template Builder",
+            "Password Protect WordPress Lite",
+            "Site Kit by Google",
+            "Templately",
+            "The Plus Addons for Elementor",
+            "Ultimate Addons for Elementor (UAE)",
+            "Ultimate Member",
+            "WooCommerce Direct Checkout",
+            "WooPayments",
+            "WP Armour - Honeypot Anti Spam",
+          ] },
+        ],
+        analytics: {
+          activeUsers: 69, newUsers: 69, avgEngagement: "3s", eventCount: 278,
+          sources: [
+            { channel: "Direct",         sessions: 28, share: 38.9 },
+            { channel: "Organic Search", sessions: 40, share: 55.6 },
+            { channel: "Unassigned",     sessions: 4,  share: 5.6 },
+          ],
+        },
+      },
+      {
+        name: "BUCK Making Cents",
+        url: "https://buckmakingcents.com",
+        pagespeed: { mobile: 19, desktop: 99 },
+        audit: {
+          mobile:  { accessibility: 80, bestPractices: 92, seo: 69 },
+          desktop: { accessibility: 82, bestPractices: 73, seo: 69 },
+        },
+        actions: [],
+        analytics: {
+          activeUsers: 12, newUsers: 12, avgEngagement: "6s", eventCount: 43,
+          sources: [
+            { channel: "Direct",         sessions: 10, share: 83.3 },
+            { channel: "Organic Search", sessions: 1,  share: 8.3 },
+            { channel: "Referral",       sessions: 1,  share: 8.3 },
+          ],
+        },
+      },
+      {
+        name: "Makota Co",
+        url: "https://makotaco.com",
+        pagespeed: { mobile: 50, desktop: 71 },
+        audit: {
+          mobile:  { accessibility: 94, bestPractices: 96, seo: 92 },
+          desktop: { accessibility: 93, bestPractices: 96, seo: 92 },
+        },
+        actions: [],
+        analytics: {
+          activeUsers: 111, newUsers: 107, avgEngagement: "20s", eventCount: 462,
+          sources: [
+            { channel: "Direct",         sessions: 70, share: 55.6 },
+            { channel: "Organic Search", sessions: 45, share: 35.7 },
+            { channel: "Unassigned",     sessions: 7,  share: 5.6 },
+            { channel: "Referral",       sessions: 3,  share: 2.4 },
+            { channel: "Cross Network",  sessions: 1,  share: 0.8 },
+          ],
+        },
+      },
+    ],
+  },
+
+  /* ===========================================================================
+     MAY 2026
      =========================================================================== */
   {
     meta: {
